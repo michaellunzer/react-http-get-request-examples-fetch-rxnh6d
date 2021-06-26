@@ -11,14 +11,19 @@ class GetRequestSetHeaders extends React.Component {
 
   componentDidMount() {
     // GET request using fetch with set headers
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5NWY5ODI2YTFhYzU0ZmIwOTlmYzg5MjNkNGYyYzUxZiIsImlhdCI6MTYyNDY1NDI4MiwiZXhwIjoxOTQwMDE0MjgyfQ.fQLypZBR8ju5KV8shkakoL94Oa4WR1er6ZTK5ASv1nU'
+    const reuestOptions = {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5NWY5ODI2YTFhYzU0ZmIwOTlmYzg5MjNkNGYyYzUxZiIsImlhdCI6MTYyNDY1NDI4MiwiZXhwIjoxOTQwMDE0MjgyfQ.fQLypZBR8ju5KV8shkakoL94Oa4WR1er6ZTK5ASv1nU',
+        'Content-Type': 'application/json'
+      }
     };
-    fetch('https://home.michaellunzer.com/api/states/sensor.sn1_temperature', {
-      headers
-    })
+
+    fetch(
+      'https://home.michaellunzer.com/api/states/sensor.sn1_temperature',
+      reuestOptions
+    )
       .then(response => response.json())
       .then(data => this.setState({ totalReactPackages: data.state }));
   }
